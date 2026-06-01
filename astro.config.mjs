@@ -49,6 +49,8 @@ export default defineConfig({
   base: "/",
   trailingSlash: "always",
 
+  adapter: cloudflare(),
+
   // 图像优化配置
   image: {
     // 全局响应式布局
