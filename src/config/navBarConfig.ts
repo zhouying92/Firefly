@@ -6,6 +6,8 @@ import {
 	NavBarSearchMethod,
 } from "../types/config";
 import { siteConfig } from "./siteConfig";
+import { loadOverride } from './loadOverride';
+
 
 // 根据页面开关动态生成导航栏配置
 const getDynamicNavBarConfig = (): NavBarConfig => {
@@ -85,8 +87,15 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 		],
 	});
 
+	// 追加自定义导航链接（来自管理面板 JSON 覆盖）
+	const overrides = loadOverride(import.meta.url, 'navBarLinks.json');
+	const customLinks = (overrides.customLinks || []) as NavBarLink[];
+	links.push(...customLinks);
+
 	// 仅返回链接，其它导航搜索相关配置在模块顶层常量中独立导出
 	return { links } as NavBarConfig;
+
+
 };
 
 // 导航搜索配置

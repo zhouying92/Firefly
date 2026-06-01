@@ -1,0 +1,23 @@
+{
+  "title": "zhou1",
+  "subtitle": "Demo site1",
+  "site_url": "https://firefly.cuteleaf.cn",
+  "description": "Firefly 是一款基于 Astro 框架开发的博客主题",
+  "keywords": [
+    "Firefly",
+    "Fuwari",
+    "Astro",
+    "博客"
+  ],
+  "lang": "zh_CN",
+  "themeColor": {
+    "hue": 165,
+    "fixed": false,
+    "defaultMode": "system"
+  },
+  "pageWidth": 100,
+  "card": {
+    "border": true,
+    "followTheme": false
+  }
+}

@@ -1,6 +1,8 @@
 import type { SponsorConfig } from "../types/config";
+import { loadOverride } from './loadOverride';
 
-export const sponsorConfig: SponsorConfig = {
+const defaultConfig: SponsorConfig = {
+	/* 原有所有字段 */
 	// 页面标题，如果留空则使用 i18n 中的翻译
 	title: "",
 
@@ -73,4 +75,9 @@ export const sponsorConfig: SponsorConfig = {
 			date: "2025-10-01",
 		},
 	],
+};
+
+export const sponsorConfig: SponsorConfig = {
+	...defaultConfig,
+	...loadOverride(import.meta.url, 'sponsorConfig.json'),
 };

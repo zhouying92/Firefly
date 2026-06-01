@@ -1,11 +1,14 @@
 import type { SiteConfig } from "@/types/config";
 import { fontConfig } from "./fontConfig";
+import { loadOverride } from './loadOverride';
 
 // 定义站点语言
 // 语言代码，例如：'zh_CN', 'zh_TW', 'en', 'ja', 'ru'。
 const SITE_LANG = "zh_CN";
 
-export const siteConfig: SiteConfig = {
+// 原来的 siteConfig 对象先存为 defaultConfig
+const defaultConfig: SiteConfig = {
+	// ... 原来所有字段保持不变 ...
 	// 站点标题
 	title: "Firefly",
 
@@ -244,4 +247,10 @@ export const siteConfig: SiteConfig = {
 
 	// 站点语言，在本配置文件顶部SITE_LANG定义
 	lang: SITE_LANG,
+
+};
+
+export const siteConfig: SiteConfig = {
+	...defaultConfig,
+	...loadOverride(import.meta.url, 'siteConfig.json'),
 };

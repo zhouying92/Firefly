@@ -1,6 +1,7 @@
 import type { AnnouncementConfig } from "../types/config";
+import { loadOverride } from './loadOverride';
 
-export const announcementConfig: AnnouncementConfig = {
+const defaultConfig: AnnouncementConfig = {
 	// 公告标题
 	title: "公告",
 
@@ -20,4 +21,9 @@ export const announcementConfig: AnnouncementConfig = {
 		// 内部链接
 		external: false,
 	},
+};
+
+export const announcementConfig: AnnouncementConfig = {
+	...defaultConfig,
+	...loadOverride(import.meta.url, 'announcementConfig.json'),
 };

@@ -1,7 +1,7 @@
 import type { MusicPlayerConfig } from "../types/config";
+import { loadOverride } from './loadOverride';
 
-// 音乐播放器配置
-export const musicPlayerConfig: MusicPlayerConfig = {
+const defaultConfig: MusicPlayerConfig = {
 	// 禁用音乐播放器方法：
 	// 模板默认侧边栏和导航栏两个都显示
 	// 1. 侧边栏：在sidebarConfig.ts侧边栏配置把音乐组件enable设为false禁用即可
@@ -58,4 +58,10 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 			},
 		],
 	},
+};
+
+// 音乐播放器配置
+export const musicPlayerConfig: MusicPlayerConfig = {
+	...defaultConfig,
+	...loadOverride(import.meta.url, 'musicConfig.json'),
 };
