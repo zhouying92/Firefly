@@ -50,7 +50,9 @@ export default defineConfig({
   base: "/",
   trailingSlash: "always",
 
-  adapter: cloudflare(),
+  adapter: cloudflare({
+    compatibilityFlags: ["nodejs_compat"],
+  }),
 
   // 图像优化配置
   image: {
