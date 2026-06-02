@@ -19,7 +19,7 @@ interface FontOptions {
 	style?: FontStyle;
 	lang?: string;
 }
-export const prerender = true;
+export const prerender = false; // 关闭 Astro 的预渲染功能，改为运行时生成 OG 图像
 
 export const getStaticPaths: GetStaticPaths = async () => {
 	if (!siteConfig.generateOgImages) {
