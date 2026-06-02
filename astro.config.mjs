@@ -280,6 +280,9 @@ export default defineConfig({
         },
       },
     ],
+    ssr: {
+      external: ['sharp']
+    },
     server: {
       watch: {
         ignored: ["**/package/**", "**/Firefly-docs/**"],
