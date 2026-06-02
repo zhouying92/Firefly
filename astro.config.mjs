@@ -53,6 +53,10 @@ export default defineConfig({
   adapter: cloudflare({
   imageService: 'cloudflare',
   compatibilityFlags: ['nodejs_compat'],
+  routes: {
+    strategy: 'include',
+    include: ['/api/*'],
+  },
 }),
 
 
