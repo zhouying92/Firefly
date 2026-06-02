@@ -266,8 +266,22 @@ export default defineConfig({
               return "\0" + id;
             }
           }
+          // 服务端/prerender：mock sharp（原生 C++ 模块无法在 Workers 中运行）
+         if (options?.ssr !== false) {
+            if (id === "sharp") {
+              return "\0sharp-mock";
+            }
+          }
         },
         load(id) {
+          if (id === "\0sharp-mock") {
+            return `
+              const sharp = function() {
+                return { png: () => ({ toBuffer: () => Buffer.from('') }) };
+              };
+              export default sharp;
+            `;
+          }
           if (id === "\0node:fs") {
             return `export function existsSync() {} export function readFileSync() {}`;
           }
@@ -280,9 +294,6 @@ export default defineConfig({
         },
       },
     ],
-    ssr: {
-      external: ['sharp']
-    },
     server: {
       watch: {
         ignored: ["**/package/**", "**/Firefly-docs/**"],
