@@ -16,7 +16,7 @@ const defaultConfig: SiteConfig = {
 	subtitle: "Demo site",
 
 	// 站点 URL
-	site_url: "https://firefly.cuteleaf.cn",
+	site_url: "https://blog.zhouying.cc.cd",
 
 	// 站点描述
 	description:

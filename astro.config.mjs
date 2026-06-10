@@ -49,6 +49,7 @@ export default defineConfig({
 
   base: "/",
   trailingSlash: "always",
+  output: "server",
 
   adapter: cloudflare({
   imageService: 'cloudflare',
