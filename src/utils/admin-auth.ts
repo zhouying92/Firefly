@@ -1,4 +1,4 @@
-const JWT_SECRET = 'firefly-admin-secret-2025';
+const JWT_SECRET = import.meta.env.JWT_SECRET || 'firefly-admin-secret-2025';
 
 export async function verifyToken(token: string): Promise<boolean> {
   try {
